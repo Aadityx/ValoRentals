@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ValoRentals - Login to your account and rent premium bikes at affordable prices.">
+  <title>ValoRentals - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+</head>
+<body>
+  <!-- Login Page -->
+  <section class="auth-page" id="loginPage">
+    <div class="auth-container slide-up">
+      <!-- Logo -->
+      <div class="auth-logo">
+        <div class="logo-icon">🏍️</div>
+        <h2>Welcome Back</h2>
+        <p>Sign in to your ValoRentals account</p>
+      </div>
+
+      <!-- Alert Message -->
+      <div class="alert" id="loginAlert">
+        <span id="loginAlertIcon"></span>
+        <span id="loginAlertMsg"></span>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword', this)">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="loginBtn">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="form-footer" style="margin-top: 24px;">
+        <p>Don't have an account? <a href="register.html">Create Account</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Auth Script -->
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

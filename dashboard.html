@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ValoRentals Dashboard - Browse and rent premium bikes at affordable daily rates.">
+  <title>ValoRentals - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="dashboard.html" class="navbar-logo">
+        <div class="logo-icon">🏍️</div>
+        <span>ValoRentals</span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="dashboard.html" class="active">Home</a>
+        <a href="history.html">My Bookings</a>
+        <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🔥 Premium Bike Rentals</div>
+      <h1>Ride Your Dream<br><span class="highlight">Bike Today</span></h1>
+      <p>Explore our curated collection of premium bikes. From sporty rides to comfortable cruisers — affordable daily rentals with zero hassle.</p>
+      <div class="hero-buttons">
+        <a href="#bikes" class="btn btn-primary btn-lg">Browse Bikes ↓</a>
+        <a href="history.html" class="btn btn-secondary btn-lg">My Bookings</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bikes Section -->
+  <section class="bikes-section" id="bikes">
+    <div class="container">
+      <h2 class="section-title">Available Bikes</h2>
+      <p class="section-subtitle">Choose from our hand-picked selection of premium rental bikes</p>
+
+      <!-- Search and Filter -->
+      <div class="search-filter-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Search bikes by name...">
+        </div>
+        <select class="filter-select" id="fuelFilter">
+          <option value="all">All Fuel Types</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Electric">Electric</option>
+          <option value="Diesel">Diesel</option>
+        </select>
+        <select class="filter-select" id="sortFilter">
+          <option value="default">Sort By</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name">Name: A-Z</option>
+        </select>
+      </div>
+
+      <!-- Bikes Grid -->
+      <div class="bikes-grid stagger-children" id="bikesGrid">
+        <!-- Bikes will be loaded dynamically by JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <div class="empty-icon">🏍️</div>
+        <h3>No bikes found</h3>
+        <p>Try adjusting your search or filter criteria</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 <a href="dashboard.html">ValoRentals</a>. All rights reserved. | Built with ❤️</p>
+    </div>
+  </footer>
+
+  <!-- Dashboard Script -->
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

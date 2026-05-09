@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ValoRentals - View detailed bike specifications and book your ride.">
+  <title>ValoRentals - Bike Details</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="dashboard.html" class="navbar-logo">
+        <div class="logo-icon">🏍️</div>
+        <span>ValoRentals</span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="dashboard.html">Home</a>
+        <a href="history.html">My Bookings</a>
+        <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Bike Details Section -->
+  <section class="details-page page-enter" id="detailsPage">
+    <div class="container">
+      <!-- Back button -->
+      <a href="dashboard.html" class="btn btn-secondary btn-sm" style="margin-bottom: 24px; display: inline-flex;">
+        ← Back to Dashboard
+      </a>
+
+      <div class="details-grid" id="bikeDetails">
+        <!-- Left: Bike Image -->
+        <div class="details-image" id="bikeImageWrap">
+          <img src="" alt="Bike Image" id="bikeImage">
+        </div>
+
+        <!-- Right: Bike Info -->
+        <div class="details-info">
+          <h1 id="bikeName">Loading...</h1>
+          <div class="details-price" id="bikePrice">₹0 <span>/ day</span></div>
+
+          <!-- Specification Cards -->
+          <div class="details-specs" id="bikeSpecs">
+            <div class="spec-item">
+              <div class="spec-label">Engine</div>
+              <div class="spec-value" id="bikeCC">-</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Mileage</div>
+              <div class="spec-value" id="bikeMileage">-</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Fuel Type</div>
+              <div class="spec-value" id="bikeFuel">-</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Type</div>
+              <div class="spec-value" id="bikeType">-</div>
+            </div>
+          </div>
+
+          <p class="details-description" id="bikeDescription">Loading bike details...</p>
+
+          <!-- Book Now Button -->
+          <a href="#" class="btn btn-accent btn-lg btn-block" id="bookNowBtn">
+            🏍️ Book Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 <a href="dashboard.html">ValoRentals</a>. All rights reserved. | Built with ❤️</p>
+    </div>
+  </footer>
+
+  <!-- Bike Details Script -->
+  <script type="module" src="js/bike-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ValoRentals - Book your bike rental with pickup details and pricing.">
+  <title>ValoRentals - Book a Bike</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="dashboard.html" class="navbar-logo">
+        <div class="logo-icon">🏍️</div>
+        <span>ValoRentals</span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="dashboard.html">Home</a>
+        <a href="history.html">My Bookings</a>
+        <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Booking Form Section -->
+  <section class="form-page">
+    <div class="form-container wide slide-up">
+      <div class="form-header">
+        <h2>📋 Book Your Ride</h2>
+        <p>Fill in your details to reserve <strong id="bookingBikeName">this bike</strong></p>
+      </div>
+
+      <!-- Alert -->
+      <div class="alert" id="bookingAlert">
+        <span id="bookingAlertIcon"></span>
+        <span id="bookingAlertMsg"></span>
+      </div>
+
+      <!-- Booking Form -->
+      <form id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="userName">Full Name</label>
+            <input type="text" id="userName" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="userPhone">Phone Number</label>
+            <input type="tel" id="userPhone" placeholder="10-digit phone number" required pattern="[0-9]{10}">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pickupDate">Pickup Date</label>
+            <input type="date" id="pickupDate" required>
+          </div>
+          <div class="form-group">
+            <label for="returnDate">Return Date</label>
+            <input type="date" id="returnDate" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pickupLocation">Pickup Location</label>
+          <select id="pickupLocation" required>
+            <option value="">Select pickup location</option>
+            <option value="MG Road Branch">MG Road Branch</option>
+            <option value="Koregaon Park Hub">Koregaon Park Hub</option>
+            <option value="Hinjewadi Center">Hinjewadi Center</option>
+            <option value="Viman Nagar Outlet">Viman Nagar Outlet</option>
+            <option value="Kothrud Station">Kothrud Station</option>
+          </select>
+        </div>
+
+        <!-- Booking Summary -->
+        <div class="booking-summary" id="bookingSummary" style="display:none;">
+          <h3>📄 Booking Summary</h3>
+          <div class="summary-row">
+            <span class="label">Bike</span>
+            <span class="value" id="summaryBike">-</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Pickup</span>
+            <span class="value" id="summaryPickup">-</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Return</span>
+            <span class="value" id="summaryReturn">-</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Duration</span>
+            <span class="value" id="summaryDays">-</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Price / Day</span>
+            <span class="value" id="summaryRate">-</span>
+          </div>
+          <div class="summary-total">
+            <span class="label">Total Amount</span>
+            <span class="value" id="summaryTotal">₹0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-accent btn-block btn-lg" style="margin-top: 24px;" id="proceedBtn">
+          Proceed to Payment →
+        </button>
+      </form>
+
+      <div class="form-footer">
+        <p><a href="dashboard.html">← Back to Dashboard</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Script -->
+  <script type="module" src="js/booking.js"></script>
+</body>
+</html>

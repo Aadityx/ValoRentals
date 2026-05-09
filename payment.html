@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ValoRentals - Complete your payment to confirm your bike rental booking.">
+  <title>ValoRentals - Payment</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="dashboard.html" class="navbar-logo">
+        <div class="logo-icon">🏍️</div>
+        <span>ValoRentals</span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="dashboard.html">Home</a>
+        <a href="history.html">My Bookings</a>
+        <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Payment Section -->
+  <section class="form-page">
+    <div class="form-container wide slide-up">
+      <div class="form-header">
+        <h2>💳 Payment</h2>
+        <p>Complete your payment to confirm the booking</p>
+      </div>
+
+      <!-- Alert -->
+      <div class="alert" id="paymentAlert">
+        <span id="paymentAlertIcon"></span>
+        <span id="paymentAlertMsg"></span>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="booking-summary">
+        <h3>📄 Order Summary</h3>
+        <div class="summary-row">
+          <span class="label">Bike</span>
+          <span class="value" id="payBike">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Duration</span>
+          <span class="value" id="payDays">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Pickup Location</span>
+          <span class="value" id="payLocation">-</span>
+        </div>
+        <div class="summary-total">
+          <span class="label">Total Amount</span>
+          <span class="value" id="payTotal">₹0</span>
+        </div>
+      </div>
+
+      <!-- Payment Methods -->
+      <h3 style="font-family: var(--font-heading); margin: 28px 0 16px; font-size: 1rem; color: var(--text-secondary);">Select Payment Method</h3>
+      <div class="payment-methods" id="paymentMethods">
+        <div class="payment-method" data-method="upi" onclick="selectPayment(this)">
+          <div class="method-icon">📱</div>
+          <div class="method-name">UPI</div>
+        </div>
+        <div class="payment-method" data-method="card" onclick="selectPayment(this)">
+          <div class="method-icon">💳</div>
+          <div class="method-name">Card</div>
+        </div>
+        <div class="payment-method" data-method="cash" onclick="selectPayment(this)">
+          <div class="method-icon">💵</div>
+          <div class="method-name">Cash</div>
+        </div>
+      </div>
+
+      <!-- UPI Details (shown when UPI is selected) -->
+      <div id="upiDetails" style="display:none;">
+        <div class="form-group">
+          <label for="upiId">UPI ID</label>
+          <input type="text" id="upiId" placeholder="yourname@upi">
+        </div>
+      </div>
+
+      <!-- Card Details (shown when Card is selected) -->
+      <div id="cardDetails" style="display:none;">
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cardExpiry">Expiry Date</label>
+            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label for="cardCvv">CVV</label>
+            <input type="password" id="cardCvv" placeholder="***" maxlength="3">
+          </div>
+        </div>
+      </div>
+
+      <!-- Cash Details (shown when Cash is selected) -->
+      <div id="cashDetails" style="display:none;">
+        <div class="alert alert-info show">
+          <span>ℹ️</span>
+          <span>Pay cash at the pickup location when collecting your bike.</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block btn-lg" style="margin-top: 24px;" id="confirmPayBtn" disabled>
+        Confirm Payment
+      </button>
+
+      <div class="form-footer">
+        <p><a href="dashboard.html">← Back to Dashboard</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <div class="modal-icon">✅</div>
+      <h3>Payment Successful!</h3>
+      <p>Your booking has been confirmed. You can view your booking details in the history page.</p>
+      <a href="history.html" class="btn btn-primary btn-lg">View My Bookings</a>
+    </div>
+  </div>
+
+  <!-- Payment Script -->
+  <script type="module" src="js/payment.js"></script>
+
+  <!-- Inline payment method selector (needs to be global) -->
+  <script>
+    // Global function for selecting payment method
+    function selectPayment(el) {
+      // Remove selection from all methods
+      document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+      // Select clicked method
+      el.classList.add('selected');
+
+      // Hide all detail sections
+      document.getElementById('upiDetails').style.display = 'none';
+      document.getElementById('cardDetails').style.display = 'none';
+      document.getElementById('cashDetails').style.display = 'none';
+
+      // Show relevant section
+      const method = el.getAttribute('data-method');
+      if (method === 'upi') document.getElementById('upiDetails').style.display = 'block';
+      if (method === 'card') document.getElementById('cardDetails').style.display = 'block';
+      if (method === 'cash') document.getElementById('cashDetails').style.display = 'block';
+
+      // Enable confirm button
+      document.getElementById('confirmPayBtn').disabled = false;
+
+      // Store selected method for the module script
+      window.__selectedPaymentMethod = method;
+    }
+  </script>
+</body>
+</html>
